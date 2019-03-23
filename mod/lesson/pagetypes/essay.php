@@ -184,6 +184,7 @@ class lesson_page_type_essay extends lesson_page {
         if (!isset($this->answers[0]->id)) {
             $this->answers[0]->id =  $DB->insert_record("lesson_answers", $this->answers[0]);
         } else {
+            $this->answers[0]->properties->timemodified = time();
             $DB->update_record("lesson_answers", $this->answers[0]->properties());
         }
 
