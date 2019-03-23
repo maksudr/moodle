@@ -4451,6 +4451,7 @@ abstract class lesson_page extends lesson_base {
                 $answer->score = $properties->score[0];
             }
             if (!empty($answer->id)) {
+                $answer->properties->timemodified = time();
                 $DB->update_record("lesson_answers", $answer->properties());
             } else {
                 $DB->insert_record("lesson_answers", $answer);
@@ -4491,6 +4492,7 @@ abstract class lesson_page extends lesson_base {
                     if (!isset($this->answers[$i]->id)) {
                         $this->answers[$i]->id = $DB->insert_record("lesson_answers", $this->answers[$i]);
                     } else {
+                        $this->answers[$i]->properties->timemodified = time();
                         $DB->update_record("lesson_answers", $this->answers[$i]->properties());
                     }
 

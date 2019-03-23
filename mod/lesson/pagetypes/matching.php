@@ -368,6 +368,7 @@ class lesson_page_type_matching extends lesson_page {
                 if (!isset($this->answers[$i]->id)) {
                     $this->answers[$i]->id =  $DB->insert_record("lesson_answers", $this->answers[$i]);
                 } else {
+                    $this->answers[$i]->properties->timemodified = time();
                     $DB->update_record("lesson_answers", $this->answers[$i]->properties());
                 }
                 // Save files in answers (no response_editor for matching questions).
@@ -376,6 +377,7 @@ class lesson_page_type_matching extends lesson_page {
                 if (!isset($this->answers[$i]->id)) {
                     $this->answers[$i]->id =  $DB->insert_record("lesson_answers", $this->answers[$i]);
                 } else {
+                    $this->answers[$i]->properties->timemodified = time();
                     $DB->update_record("lesson_answers", $this->answers[$i]->properties());
                 }
 
