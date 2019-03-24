@@ -93,7 +93,10 @@ class block_starredcourses_external extends core_course_external {
             $context = \context_course::instance($favourite->itemid);
 
             $exporter = new course_summary_exporter($course, ['context' => $context, 'isfavourite' => true]);
-            return $exporter->export($renderer);
+            $formattedcourse = $exporter->export($renderer);
+            $formattedcourse->fullname = htmlspecialchars_decode($formattedcourse->fullname, ENT_QUOTES);
+            $formattedcourse->shortname = htmlspecialchars_decode($formattedcourse->shortname, ENT_QUOTES);
+            return $formattedcourse;
         }, $favourites);
 
         return $formattedcourses;
