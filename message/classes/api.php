@@ -783,8 +783,8 @@ class api {
             } else {
                 $convcontext = \context::instance_by_id($conversation->contextid);
             }
-            $conv->name = format_string($conversation->conversationname, true, ['context' => $convcontext]);
-
+            $formatoptions = ['context' => $convcontext, 'escape' => false];
+            $conv->name = format_string($conversation->conversationname, true, $formatoptions);
             $conv->subname = $convextrafields[$conv->id]['subname'] ?? null;
             $conv->imageurl = $convextrafields[$conv->id]['imageurl'] ?? null;
             $conv->type = $conversation->conversationtype;
