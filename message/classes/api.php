@@ -470,7 +470,8 @@ class api {
                 if (array_key_exists($groupid, $courseinfo)) {
                     $group = $courseinfo[$groupid];
                     // Subname.
-                    $extrafields[$convid]['subname'] = format_string($courseinfo[$groupid]->courseshortname);
+                    $formatoptions = ['escape' => false];
+                    $extrafields[$convid]['subname'] = format_string($courseinfo[$groupid]->courseshortname, true, $formatoptions);
 
                     // Imageurl.
                     $extrafields[$convid]['imageurl'] = $renderer->image_url('g/g1')->out(false); // default image.
